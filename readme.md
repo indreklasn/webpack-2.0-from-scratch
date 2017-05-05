@@ -9,3 +9,5 @@ ____
 [Chapter 3](https://medium.com/@wesharehoodies/simple-beginner-guide-for-webpack-2-0-from-scratch-part-iii-d374c021f9fc)
 
 [Chapter 4](https://medium.com/@wesharehoodies/simple-beginner-guide-for-webpack-2-0-from-scratch-part-iv-102efc01ffad)
+
+[Chapter 5](https://medium.com/@wesharehoodies/simple-beginner-guide-for-webpack-2-0-from-scratch-part-v-495dba627718)
