@@ -3,7 +3,6 @@ import cat from 'images/cat';
 import dog from 'images/dog';
 import dogs from 'images/dogs';
 
-
 const hello = () => {
   return (
     <div className="container">
@@ -19,7 +18,6 @@ const hello = () => {
       <div className="image-wrapper">
         <img src={dogs} className="image-wrapper__image" alt=""/>
       </div>
-
 
     </div>
   )
