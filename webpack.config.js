@@ -5,10 +5,9 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // require webpack pl
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin'); // require webpack plugin
 
 let config = { // config object
-
   entry: './src/index.js', // entry file
   output: { // output
-    path: path.resolve(__dirname, './public'), // ouput path
+    path: path.resolve(__dirname, 'public'), // ouput path
     filename: 'output.js' // output filename
   },
   resolve: { // These options change how modules are resolved
@@ -26,10 +25,10 @@ let config = { // config object
       },
       {
         test: /\.scss$/, // files ending with .scss
-        use: ExtractTextWebpackPlugin.extract({ // call our plugin with extract method
-          use: ['css-loader', 'sass-loader'], // use these loaders
-          fallback: 'style-loader' // fallback for any CSS not extracted
-        }) // end extract
+        use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader'],
+        })),
       },
       {
         test: /\.jsx$/, // all files ending with .jsx
@@ -38,7 +37,7 @@ let config = { // config object
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: ['file-loader?context=src/assets/images/&name=images/[path][name].[ext]', {
+        loaders: ['file-loader?context=src/assets/images/&name=images/[path][name].[ext]', {  // images loader
           loader: 'image-webpack-loader',
           query: {
             mozjpeg: {
@@ -65,10 +64,12 @@ let config = { // config object
     new ExtractTextWebpackPlugin('styles.css'), // call the ExtractTextWebpackPlugin constructor and name our css file
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, './public'), // A directory or URL to serve HTML content from.
+    contentBase: path.resolve(__dirname, 'public'), // A directory or URL to serve HTML content from.
     historyApiFallback: true, // fallback to /index.html for Single Page Applications.
     inline: true, // inline mode (set to false to disable including client scripts (like livereload)
-    open: true // open default browser while launching
+    open: true, // open default browser while launching
+    compress: true, // Enable gzip compression for everything served:
+    hot: true // Enable webpack's Hot Module Replacement feature
   },
   devtool: 'eval-source-map', // enable devtool for better debugging experience
 }
