@@ -7,7 +7,10 @@
   font-family: "Merriweather", sans-serif; }
 
 .container {
-  width: 100%; }
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
   .container .image-wrapper {
     display: inline-block;
     margin: 0 10px; }

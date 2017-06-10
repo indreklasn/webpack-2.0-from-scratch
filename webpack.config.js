@@ -27,7 +27,7 @@ let config = { // config object
         test: /\.scss$/, // files ending with .scss
         use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({  // HMR for styles
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader'],
+          use: ['css-loader', 'sass-loader', 'postcss-loader'],
         })),
       },
       {
