@@ -3,8 +3,9 @@ const path = require('path'); // nodejs dependency when dealing with paths
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin'); // require webpack plugin
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // require webpack plugin
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin'); // require webpack plugin
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
-let config = { // config object
+const config = { // config object
   entry: './src/index.js', // entry file
   output: { // output
     path: path.resolve(__dirname, 'public'), // ouput path
@@ -62,6 +63,7 @@ let config = { // config object
   },
   plugins: [ // webpack plugins
     new ExtractTextWebpackPlugin('styles.css'), // call the ExtractTextWebpackPlugin constructor and name our css file
+    new DashboardPlugin(), // webpack-dashboard
   ],
   devServer: {
     contentBase: path.resolve(__dirname, 'public'), // A directory or URL to serve HTML content from.
